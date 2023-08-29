@@ -10,20 +10,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+  #YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
   CURRENT_BRANCH_NAME: $(Build.SourceBranch)
 
 steps:
-- task: Cache@2
-  inputs:
-    key: 'yarn | "$(Agent.OS)" | yarn.lock'
-    restoreKeys: |
-       yarn | "$(Agent.OS)"
-       yarn
-    path: $(YARN_CACHE_FOLDER)
-  displayName: Cache Yarn packages
+#- task: Cache@2
+#  inputs:
+#    key: 'yarn | "$(Agent.OS)" | yarn.lock'
+#    restoreKeys: |
+#       yarn | "$(Agent.OS)"
+#       yarn
+#    path: $(YARN_CACHE_FOLDER)
+#  displayName: Cache Yarn packages
 
-- script: yarn --frozen-lockfile
+#- script: yarn --frozen-lockfile
 
 - task: NodeTool@0
   inputs:
